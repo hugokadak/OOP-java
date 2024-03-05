@@ -1,4 +1,4 @@
-package kodu2_hugo;
+package kodu2_hugo_kadak;
 import java.util.Scanner;
 
 public class kodu_2_hugo {
@@ -6,7 +6,9 @@ public class kodu_2_hugo {
     public static void main(String[] args) {
         int M = 10;
         int N = 3;
-        makeComputerMove lahutatav = new makeComputerMove();
+        int numberik = lahutaja(M, arvutiNumber());
+        System.out.println("numberik arv " + numberik);
+        //makeComputerMove lahutatav = new makeComputerMove();
         while (M != 0) {
             System.out.println("Laual on " + M + " tikku.");
             lahutaja(M, makeHumanMove(M, N));
@@ -20,9 +22,9 @@ public class kodu_2_hugo {
 
     // also vaata kas saad makecomputermove faili tõsta siia üle, siis ei pea jebima selle sitaga
     public static int arvutiNumber() {
-        makeComputerMove arvutiNumber1 = new makeComputerMove();
-        int a = makeComputerMove.arvutiNumber(int a, int b);
-        return a;
+        System.out.println("Arvuti kord võtta tikke");
+        int ab = 3;
+        return ab;
     }
     public static int lahutaja(int maxTikuArv, int lahutatav) {
         System.out.println("lahutan");
@@ -49,17 +51,10 @@ public class kodu_2_hugo {
         }
         return tikuArv;
     }
-}
- /*   public static int inimNumber(int asd) {
-        int number = 0;
-        return number;
-    }
-    public static class makeComputerMove {
-        public static void main(String[] args) {
-            // int a = 16; int b = 3;
-            System.out.println("Arvuti kord võtta!");
-            int uusTikuKogus = arvutiNumber(16, 3);
-            System.out.println("laual on " + uusTikuKogus + " tikku.");
+    public static int makeComputerMove(int tikukogus, int arvKord) {
+            //System.out.println("Arvuti kord võtta!");
+        //System.out.println("laual on " + uusTikuKogus + " tikku.");
+        return arvutiNumber(tikukogus, arvKord);
         }
         public static int arvutiNumber(int a, int b) {
             // võta 3 tikku              ><
@@ -69,5 +64,6 @@ public class kodu_2_hugo {
                 return (a-b+1);
             }
         }
-    }
-}*/
+
+
+}
