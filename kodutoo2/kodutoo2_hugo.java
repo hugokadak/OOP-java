@@ -1,4 +1,5 @@
 
+import java.util.Random;
 import java.util.Scanner;
 // ----------------------------------UPDATE -----------------------------
 /*
@@ -20,7 +21,7 @@ public class kodutoo2_hugo {
             int maxTikkarv = algneM - makeHumanMove(algneM, algneN);  // inimese move
             algneM = maxTikkarv;                                      // lahutab valitud koguse
             if (algneM == 0) {
-                System.out.println("Sa võitsid!! get fucked arvutid"); // kui peale eemaldamist
+                System.out.println("Sa võitsid!! arvutid ei saa kunagi inimestest paremaks!"); // kui peale eemaldamist
                 break;                                       // on 0 tikku siis võidad
             }
             int maxTikkarv1 = algneM - makeComputerMove(algneM, algneN);
@@ -82,16 +83,20 @@ public class kodutoo2_hugo {
         return NjaM;
     }
     public static int makeComputerMove(int tikukogus, int arvKord) {
-        if (tikukogus == arvKord) {
+        return getRandomNumber(1, arvKord);         // random number generator
+        /*if (tikukogus == arvKord) {
             return arvKord;                         // sneaky võit
         } else if (tikukogus < arvKord){
             return tikukogus;                       // sneaky võit
         } else {
             return arvKord-1;                       // lahkuse mõttes võtame 1 enne max lubatud
-        }
-
+        }*/
     }
 
+    public static int getRandomNumber(int min, int max) {
+        Random random = new Random();
+        return random.nextInt(max - min) + min;
+    }
     public static int makeHumanMove(int tikkudeArv, int maxArv) {   // mängija function
         int tikuArv = 0;
         try {                                                       // try block NaN vältimiseks
