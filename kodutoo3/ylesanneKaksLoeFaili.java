@@ -18,8 +18,8 @@ public class ylesanneKaksLoeFaili {
         loeFailiJaPrindi(sisendfail, valjund1, valjund2);                               // funktsioon
     }
     // <>
-    static String loeFailiJaPrindi(String uusFail, String valjund1, String valjund2) {                // uusFail on faili nimi stringina
-        String b = "le funny";
+    static void loeFailiJaPrindi(String uusFail, String valjund1, String valjund2) {                // uusFail on faili nimi stringina
+
         int mituRidaOnFailis = 0;
         String[] eesnimedAndmed = new String[5];                // string[] et kontrolle teha
         String[] perenimedAndmed = new String[5];
@@ -207,7 +207,5 @@ public class ylesanneKaksLoeFaili {
         } catch (Exception e) {
             System.out.println("Error: miski läks valesti aga programm ei tea mis (heh)");
         }
-        b = b + " num 69";
-        return b;
     }
 }
