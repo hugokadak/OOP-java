@@ -1,0 +1,18 @@
+Perenimi:     Kask
+Eesnimi:      Joosep
+Isikukood:    81234442345
+Palk:         300   //vale
+
+
+Perenimi:     Toomas
+Eesnimi:      1234567
+Isikukood:    Tamm
+Palk:         1100      //vale
+
+
+Perenimi:     Meri
+Eesnimi:      Piret
+Isikukood:    00000000001
+Palk:         errr   //vale
+
+
