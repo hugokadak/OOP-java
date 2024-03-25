@@ -12,11 +12,13 @@ public class ylesanneKaksLoeFaili {
     public static void main(String[] args) {
         int b = 69;                                                 // the funny number
         // not good, ei saa faili avada kui just main directoryt mitte avades :p
-        String sisendfail = "C:/Users/Hugok/oop-java/oop-java/src/kodu3_hugo/inimesed.txt";                             // sisendfail, pidin txt sest ta paljalt ei loe
-        loeFailiJaPrindi(sisendfail);                               // funktsioon
+        String sisendfail = "C:/Users/Hugok/oop-java/oop-java/src/kodu3_hugo/inimesed.txt"; // sisendfail, pidin txt sest ta paljalt ei loe
+        String valjund1 = "valjund1.txt";
+        String valjund2 = "valjund2.txt";
+        loeFailiJaPrindi(sisendfail, valjund1, valjund2);                               // funktsioon
     }
     // <>
-    static String loeFailiJaPrindi(String uusFail) {                // uusFail on faili nimi stringina
+    static String loeFailiJaPrindi(String uusFail, String valjund1, String valjund2) {                // uusFail on faili nimi stringina
         String b = "le funny";
         int mituRidaOnFailis = 0;
         String[] eesnimedAndmed = new String[5];                // string[] et kontrolle teha
@@ -60,9 +62,6 @@ public class ylesanneKaksLoeFaili {
             System.out.println("isikukoodandmed = " + Arrays.toString(isikukoodidAndmed));
             System.out.println("palkandmed = " + Arrays.toString(palkAndmed));
             System.out.println("--------------- andmete check --------------------");
-            System.out.println("--------------- for cycle --------------------");
-
-
             scanner.close();
         } catch (FileNotFoundException e) {
             System.out.println("ei leid faili");        // error handling faili puudus
@@ -71,47 +70,144 @@ public class ylesanneKaksLoeFaili {
         } // <>
 
         // eesnimedAndmed perenimedAndmed isikukoodidAndmed palkAndmed
+        System.out.println("");
+        System.out.println("--------------- vigade kontroll --------------------");
         int[] vigasedAndmed = new int[5];
-        /* -------------------------------------------------------------------------
-        23.03.2024 seis:
-        praegu töötab ilusti, runni faili enne töötamist et tuletada meelde mida programm teeb
-        siit alumine try catch plokk kirjutab faili ilusti andmeid
-        fail asub /oop-java/oop-java idk miks seal mitte kodu3_hugo kaustas
-        teha vaja:
-        if tingimused kas perenimi on valid
-        if tingimused kas eesnimi on valid
-        if tingimused kas isikukood on valid
-        if tingimused kas palk on valid
-        kirjutada teise faili vigaste andmetega read
-        teoorias kasutades samat int array kus leiab kas anne on valid indexi kaudu lisada
-        uued andmed teise faili
-        ------------------------------------------------------------------------- */
+        int viganeIndex = 0;
 
-        try {
-            FileWriter failiKirjutaja = new FileWriter("valjund1.txt");
-            for (int i = 0; i < mituRidaOnFailis; i++) {
-                failiKirjutaja.write("Perenimi:     " + perenimedAndmed[i] + "\n");
-                failiKirjutaja.write("Eesnimi:      " + eesnimedAndmed[i] + "\n");
-                failiKirjutaja.write("Isikukood:    " + isikukoodidAndmed[i] + "\n");
-                failiKirjutaja.write("Palk:         " + palkAndmed[i] + "\n");
-                failiKirjutaja.write("\n");
-                failiKirjutaja.write("\n");
+        for (String str : eesnimedAndmed) {         //kontroll kas eesnimed on korrektsed
+            char[] chars = str.toCharArray();
+            for (char c : chars) {
+                if (!Character.isLetter(c)) {
+                    vigasedAndmed[viganeIndex] +=1;     // int[] kus on vigase anne index
+                    break;                              // tulevikus kasulik et panna faili õiged
+
+                } else {
+                    // ära tee midagi
+                }
             }
+            viganeIndex++;
+        }
+        //System.out.println("Vigased eesnime andme indexid vigasedAndmed = " + Arrays.toString(vigasedAndmed));
+
+        int[] perevigasedAndmed = new int[5];
+        int pereviganeIndex = 0;
+        for (String str : perenimedAndmed) {         //kontroll kas perenimed on korrektsed
+            char[] chars = str.toCharArray();
+            for (char c : chars) {
+                if (!Character.isLetter(c)) {
+                    perevigasedAndmed[pereviganeIndex] +=1;     // int[] kus on vigase anne index
+                    break;                              // tulevikus kasulik et panna faili õiged
+
+                } else {
+                    // ära tee midagi
+                }
+            }
+            pereviganeIndex++;
+        }
+        //System.out.println("Vigased perenime andme indexid perevigasedAndmed = " + Arrays.toString(perevigasedAndmed));
+
+        int[] isikukoodAndmed = new int[5];
+        int isikukoodIndex = 0;
+        // <>
+        try {
+            for (String isikukood : isikukoodidAndmed) {         //kontroll kas isikukood on korrektsed
+                char[] isikukooddigits = isikukood.toCharArray();
+                if (isikukooddigits.length != 11) {             // kontroll kas pikkus 11
+                    isikukoodAndmed[isikukoodIndex] += 1;
+                }
+                for (int i = 0; i<isikukooddigits.length; i++) {
+                    if (Character.isDigit(isikukood.charAt(i))) {
+                        // ära tee midagi
+                    } else {                                    // kui char ei ole digit ss +1
+                        isikukoodAndmed[isikukoodIndex] += 1;
+                        break;
+                    }
+                }
+                isikukoodIndex++;
+            }
+            //System.out.println("Vigased isikukoodi andme indexid isikukoodAndmed = " + Arrays.toString(isikukoodAndmed));
+
+        } catch (Exception e) {
+            isikukoodAndmed[isikukoodIndex] += 1;
+        }
+
+        int[] veapalgaAndmed = new int[5];
+        int palgaIndex = 0;
+        for (String str : palkAndmed) {         //kontroll kas palk on korrektsed
+            char[] chars = str.toCharArray();
+            for (char c : chars) {
+                if (!Character.isDigit(c)) {
+                    veapalgaAndmed[palgaIndex] +=1;     // int[] kus on vigase anne index
+                    break;                              // tulevikus kasulik et panna faili õiged
+
+                } else {
+                    continue;                           // ära tee midagi
+                }
+            }
+            palgaIndex++;
+        }
+        //System.out.println("Vigased palga andme indexid veapalgaAndmed = " + Arrays.toString(veapalgaAndmed));
+        int[] vigasedandmedKokku = new int[5];
+        // <>
+        // vigasedAndmed perevigasedAndmed isikukoodAndmed veapalgaAndmed
+        for (int i = 0; i < 5; i++) {
+            if (vigasedAndmed[i] != 0) {
+                vigasedandmedKokku[i]++;                            // odav viis kuda valesid andmeid leida
+            }
+            if (perevigasedAndmed[i] != 0) {
+                vigasedandmedKokku[i]++;
+            }
+            if (isikukoodAndmed[i] != 0) {
+                vigasedandmedKokku[i]++;
+            }
+            if (veapalgaAndmed[i] != 0) {
+                vigasedandmedKokku[i]++;
+            }
+        }
+        System.out.println("Vigased andmete indexid vigasedAndmedKokku = " + Arrays.toString(vigasedandmedKokku));
+        for (int i = 0; i < 5; i++) {
+            if (vigasedandmedKokku[i] != 0) {
+                System.out.println("Leidsime " + (i + 1) + ". realt " + vigasedandmedKokku[i] + " vigase(-id) sisendi(-eid).");
+            }
+        }
+        System.out.println("--------------- vigade kontroll --------------------");
+        try {
+            FileWriter failiKirjutaja = new FileWriter(valjund1);
+            FileWriter vigaseFailiKirjutaja = new FileWriter(valjund2);
+            int vigasteandmeteIndexKontrolliks = 0;
+            int valjund1ridaarv = 0;
+            int valjund2ridaarv = 0;
+            for (int i = 0; i < mituRidaOnFailis; i++) {
+                if (vigasedandmedKokku[vigasteandmeteIndexKontrolliks] == 0) {
+                    valjund1ridaarv++;
+                    failiKirjutaja.write("Perenimi:     " + perenimedAndmed[i] + "\n");
+                    failiKirjutaja.write("Eesnimi:      " + eesnimedAndmed[i] + "\n");
+                    failiKirjutaja.write("Isikukood:    " + isikukoodidAndmed[i] + "\n");
+                    failiKirjutaja.write("Palk:         " + palkAndmed[i] + "\n");
+                    failiKirjutaja.write("\n");
+                    failiKirjutaja.write("\n");
+                } else {
+                    valjund2ridaarv++;
+                    vigaseFailiKirjutaja.write("Perenimi:     " + perenimedAndmed[i] + "\n");
+                    vigaseFailiKirjutaja.write("Eesnimi:      " + eesnimedAndmed[i] + "\n");
+                    vigaseFailiKirjutaja.write("Isikukood:    " + isikukoodidAndmed[i] + "\n");
+                    vigaseFailiKirjutaja.write("Palk:         " + palkAndmed[i] + "\n");
+                    vigaseFailiKirjutaja.write("\n");
+                    vigaseFailiKirjutaja.write("\n");
+                    }
+                vigasteandmeteIndexKontrolliks++;
+            }
+            vigaseFailiKirjutaja.close();
             failiKirjutaja.close();
+            System.out.println("");
+            System.out.println("Loodud fail " + valjund1 + " " + valjund1ridaarv + " töötaja andmetega.");
+            System.out.println("Loodud fail " + valjund2 + " " + valjund2ridaarv + " töötaja andmetega.");
+
         } catch (Exception e) {
             System.out.println("Error: miski läks valesti aga programm ei tea mis (heh)");
         }
-
-
         b = b + " num 69";
         return b;
     }
-    /*static void convert(String sisendfail, String valjund1, String valjund2) {
-        try {
-            File valjund1fail = new File("valjund1.txt");
-
-        } catch (Exception e) {
-            System.out.println("Error: miski läks valesti aga programm ei tea mis (heh)");
-        }
-    }*/
 }

@@ -8,7 +8,7 @@ public class eemaldaSagedaseimNumberDEMO {
         String sampleText2 = "trrkrt kpsstVVrqqKKt !!!!!!!!!!!!";                   //sampletext2
         //demoPlayer(sampleText);
         // ---------------- change here ------------------
-        int tagastatudNum = demoPlayer(sampleText);
+        int tagastatudNum = EemaldaSagedaseimNumber(sampleText);
         // vaheta demoPlayer(sampleText) et programmi korrektset tööd vaadata
         // vaheta demoPlayer(sampleText2) et erindit ilma arvudeta vaadata
         if (tagastatudNum == 404) {
@@ -21,7 +21,7 @@ public class eemaldaSagedaseimNumberDEMO {
         // ---------------- end of change -----------------
     }
     // <>
-    static int demoPlayer(String lamptekst) {
+    static int EemaldaSagedaseimNumber(String lamptekst) {
         int naljakasNum = 69;
 
         System.out.println("Analüüsin teksti:   " + lamptekst);
