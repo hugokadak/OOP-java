@@ -6,23 +6,33 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.text.Text?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.AnchorPane?>
 <VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
       fx:controller="org.example.kodutoo6.HelloController">
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
     </padding>
-
-    <Label fx:id="welcomeText"/>
-    <Button text="Hello!" onAction="#onHelloButtonClick"/>
-    <Button fx:id="button1" layoutX = "15.0" layoutY = "15.0" prefHeight = "40.0" prefWidth = "40.0"/>
-    <Button fx:id="button2" layoutX = "55.0" layoutY = "15.0" prefHeight = "40.0" prefWidth = "40.0"/>
-    <Button fx:id="button3" layoutX = "95.0" layoutY = "15.0" prefHeight = "40.0" prefWidth = "40.0"/>
-    <Button fx:id="button4" layoutX = "15.0" layoutY = "55.0" prefHeight = "40.0" prefWidth = "40.0"/>
-    <Button fx:id="button5" layoutX = "55.0" layoutY = "55.0" prefHeight = "40.0" prefWidth = "40.0"/>
-    <Button fx:id="button6" layoutX = "95.0" layoutY = "55.0" prefHeight = "40.0" prefWidth = "40.0"/>
-    <Button fx:id="button7" layoutX = "15.0" layoutY = "95.0" prefHeight = "40.0" prefWidth = "40.0"/>
-    <Button fx:id="button8" layoutX = "55.0" layoutY = "95.0" prefHeight = "40.0" prefWidth = "40.0"/>
-    <Button fx:id="button9" layoutX = "95.0" layoutY = "95.0" prefHeight = "40.0" prefWidth = "40.0"/>
-    <Text fx:id="winnerchickendinner" layoutX = "100.0" layoutY = "100.0" text="TIC-TAC-TOE" textAlignment="CENTER" />
-
+    <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="100" minWidth="100" prefWidth="400.0" prefHeight="400.0">
+        <FlowPane layoutX = "5.0" layoutY = "5.0" prefHeight="165.0" prefWidth="165.0">
+            <Button fx:id="button1" layoutX = "15.0" layoutY = "15.0" prefHeight = "40.0" mnemonicParsing="false" prefWidth = "40.0"/>
+            <Button fx:id="button2" layoutX = "55.0" layoutY = "15.0" prefHeight = "40.0" mnemonicParsing="false" prefWidth = "40.0"/>
+            <Button fx:id="button3" layoutX = "95.0" layoutY = "15.0" prefHeight = "40.0" mnemonicParsing="false" prefWidth = "40.0"/>
+            <Button fx:id="button4" layoutX = "135.0" layoutY = "15.0" prefHeight = "40.0" mnemonicParsing="false" prefWidth = "40.0"/>
+            <Button fx:id="button5" layoutX = "15.0" layoutY = "55.0" prefHeight = "40.0" mnemonicParsing="false" prefWidth = "40.0"/>
+            <Button fx:id="button6" layoutX = "55.0" layoutY = "55.0" prefHeight = "40.0" mnemonicParsing="false" prefWidth = "40.0"/>
+            <Button fx:id="button7" layoutX = "95.0" layoutY = "55.0" prefHeight = "40.0" mnemonicParsing="false" prefWidth = "40.0"/>
+            <Button fx:id="button8" layoutX = "135.0" layoutY = "55.0" prefHeight = "40.0" mnemonicParsing="false" prefWidth = "40.0"/>
+            <Button fx:id="button9" layoutX = "15.0" layoutY = "95.0" prefHeight = "40.0" mnemonicParsing="false" prefWidth = "40.0"/>
+            <Button fx:id="button10" layoutX = "55.0" layoutY = "95.0" prefHeight = "40.0" mnemonicParsing="false" prefWidth = "40.0"/>
+            <Button fx:id="button11" layoutX = "95.0" layoutY = "95.0" prefHeight = "40.0" mnemonicParsing="false" prefWidth = "40.0"/>
+            <Button fx:id="button12" layoutX = "135.0" layoutY = "95.0" prefHeight = "40.0" mnemonicParsing="false" prefWidth = "40.0"/>
+            <Button fx:id="button13" layoutX = "15.0" layoutY = "135.0" prefHeight = "40.0" mnemonicParsing="false" prefWidth = "40.0"/>
+            <Button fx:id="button14" layoutX = "55.0" layoutY = "135.0" prefHeight = "40.0" mnemonicParsing="false" prefWidth = "40.0"/>
+            <Button fx:id="button15" layoutX = "95.0" layoutY = "135.0" prefHeight = "40.0" mnemonicParsing="false" prefWidth = "40.0"/>
+            <Button fx:id="button16" layoutX = "135.0" layoutY = "135.0" prefHeight = "40.0" mnemonicParsing="false" prefWidth = "40.0"/>
+        </FlowPane>
+        <Text fx:id="winnerchickendinner" layoutX = "50.0" layoutY = "180.0" text="TIC-TAC-TOE-TAG" textAlignment="CENTER" />
+        <Button layoutX = "50.0" layoutY = "190.0" mnemonicParsing="false" onAction ="#restart" text="Restart" />
+    </AnchorPane>
 </VBox>
